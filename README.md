@@ -9,7 +9,7 @@
 
 ## 📄 This project in short
 
-This project, led by Julien GENESTE, follows on from the [POCDroneReforestation](https://github.com/Kariboo-Corp/POCDroneReforestation) project, in which an **Unmanned Aerial Vehicle** (UAV) equiped with a **seed cannon** was developped. At that point, the drone would only be teleoperated.
+This project, led by Julien GENESTE, follows on from the [POCDroneReforestation](https://github.com/Kariboo-Corp/POCDroneReforestation) project, in which an **Unmanned Aerial Vehicle** (UAV) equiped with a **seed cannon** was developped. At that point, the drone would only be teleoperated. The video above shows the results of that project, i.e. our starting point.
 
 The idea of this project is to make the drone autonomous using the middleware [ROS 2 (Humble)](https://docs.ros.org/en/humble/index.html). The objectives are as follows:
 - Find a way to **precisely locate** the drone at all times during the planting process
