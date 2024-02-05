@@ -24,4 +24,4 @@ This project was created in response to the many fires in Gironde and more gener
 | :--------------------: | :--------------------: |
 | 💼 **Client** | Julien GENESTE |
 | 🔒 **Confidentiality** | **Public** |
-| 👨‍👨‍👦 **Authors** | [Camille PARRATT]() , [Margo BIRET]() , [Théodore GIGAULT](), [Lucas GAVERIAUX]() |
+| 👨‍👨‍👦 **Authors** | [Camille PARRATT]() , [Margo BIRET](https://www.linkedin.com/in/margo-biret/) , [Théodore GIGAULT](https://www.linkedin.com/in/theodoregi/), [Lucas GAVERIAUX](https://www.linkedin.com/in/lucasgaveriaux/) |
