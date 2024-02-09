@@ -13,7 +13,6 @@ This section describes the process to follow in order to obtain a result such as
 - **PX4-Autopilot**: An open-source flight control software for drones and other unmanned vehicles.
 - **QGroundControl**: A user-friendly ground control station for the configuration and operation of UAVs.
 
-
 ## 📁 Installing the project
 
 ## 〽️ Path Generation
@@ -70,27 +69,27 @@ latitude, longitude
 
 Once everything is set up, you will need 5 different terminals to run the simulation and visualize the drone's trajectory in real-time.
 
-1. Start MicroXRCEAgent with the command: 
+1. Start **MicroXRCEAgent** with the command: 
 ```
 MicroXRCEAgent udp4 -p 8888
 ```
 
-2. Launch the QGroundControl image
+2. Launch the **QGroundControl** image
 ```
 ./QGroundControl.AppImage
 ```
 
-3. Go to the PX4-Autopilot directory and launch it with the command:
+3. Go to the **PX4-Autopilot** directory and launch it with the command:
 ```
 make -j32 px4_sitl gz_x500
 ```
 
-4. Launch the ROS sensor_combined node:
+4. Launch the **ROS sensor_combined node**:
 ```
 ros2 launch px4_ros_com sensor_combined_listener.launch.py
 ```
 
-5. Wait for sensor data reception in terminal 4, then launch the drone controller with:
+5. Wait for sensor data reception in terminal 4, then launch the **drone controller** with:
 ```
 ros2 run px4_ros_com offboard_control
 ```

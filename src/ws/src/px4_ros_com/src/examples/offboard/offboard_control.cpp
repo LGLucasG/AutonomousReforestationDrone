@@ -1,5 +1,18 @@
 /****************************************************************************
  *
+ * Modified 2024 by the Kariboo Project Team for drone reforestation purposes.
+ * Original copyright 2020 PX4 Development Team. All rights reserved.
+ *
+ * Enhancement: Extended the offboard control capabilities to allow the drone to
+ * reach multiple predefined positions, beyond the initial takeoff position capability.
+ * This modification supports the Kariboo project's goal of reforesting fields using drones.
+ * Modification conducted by engineering students from ENSEIRB-MATMECA as part of a
+ * collaborative effort to improve drone position control for environmental restoration tasks.
+ *
+ ****************************************************************************/
+
+/****************************************************************************
+ *
  * Copyright 2020 PX4 Development Team. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -74,15 +87,19 @@ public:
 		offboard_control_mode_publisher_ = this->create_publisher<OffboardControlMode>("/fmu/in/offboard_control_mode", MSG_QUEUE_SIZE);
 		trajectory_setpoint_publisher_ = this->create_publisher<TrajectorySetpoint>("/fmu/in/trajectory_setpoint", MSG_QUEUE_SIZE);
 		vehicle_command_publisher_ = this->create_publisher<VehicleCommand>("/fmu/in/vehicle_command", MSG_QUEUE_SIZE);
+		// subscribe to the vehicle local position to compare with the target position
 		vehicle_local_pos_listener_ = this->create_subscription<VehicleLocalPosition>("/fmu/out/vehicle_local_position", rclcpp::QoS(MSG_QUEUE_SIZE).best_effort().transient_local(), [this](const VehicleLocalPosition::UniquePtr msg)
 																					  { this->current_local_pos = {msg->x, msg->y, msg->z}; });
+		// subscribe to the vehicle global position to initialize the GPS to local converter
 		vehicle_global_pos_listener_ = this->create_subscription<VehicleGlobalPosition>("/fmu/out/vehicle_global_position", rclcpp::QoS(MSG_QUEUE_SIZE).best_effort().transient_local(), [this](const VehicleGlobalPosition::UniquePtr msg)
 																						{ this->current_gps = {msg->lat, msg->lon, msg->alt}; });
 		offboard_setpoint_counter_ = 0;
+		// read the csv file
 		const char *homeDir = getenv("HOME");
+		// find the ws directory in homeDir recursively
 		if (homeDir)
 		{
-			string filePath = string(homeDir) + "/ws_sensor_combined/src/px4_ros_com/src/examples/offboard/bfp_gps.csv";
+			string filePath = string(homeDir) + "/ws/src/px4_ros_com/src/examples/offboard/bfp_gps.csv";
 			// read bfp_gps.csv file
 			ifstream file(filePath);
 			// check if file is not empyt/not found
@@ -197,12 +214,14 @@ void OffboardControl::Disarm()
 	RCLCPP_INFO(this->get_logger(), "Disarm command send");
 }
 
+// land the drone
 void OffboardControl::Land()
 {
 	PublishVehicleCommand(VehicleCommand::VEHICLE_CMD_NAV_LAND, 0.0);
 	RCLCPP_INFO(this->get_logger(), "Land command send");
 }
 
+// convert a double array to a float array
 array<float, 3> OffboardControl::convertDoubleToFloat(const array<double, 3> &input)
 {
 	array<float, 3> output = {0, 0, 0};
@@ -213,11 +232,13 @@ array<float, 3> OffboardControl::convertDoubleToFloat(const array<double, 3> &in
 	return output;
 }
 
+// initialize the GPS to local converter
 void OffboardControl::initializeGPSToLocalConverter(double initialLatitude, double initialLongitude, double initialAltitude)
 {
 	this->gpsToLocalConverter.Reset(initialLatitude, initialLongitude, initialAltitude);
 }
 
+// convert GPS coordinates to local coordinates
 tuple<double, double, double> OffboardControl::convertGPSToLocal(double latitude, double longitude, double altitude)
 {
 	double localX, localY, localZ;
@@ -225,15 +246,16 @@ tuple<double, double, double> OffboardControl::convertGPSToLocal(double latitude
 	return {localX, localY, localZ};
 }
 
+// multiply a 3*3 matrix by a 3*1 matrix
 array<float, 3> OffboardControl::matrixMultiply(const array<array<float, 3>, 3> &A, const array<float, 3> &B)
 {
 	int rowsA = A.size();
 	int colsA = A[0].size();
 
-	// Initialiser la matrice résultante avec des zéros.
+	// Initialise the result matrix with zeros.
 	array<float, 3> C = {0, 0, 0};
 
-	// Effectuer le produit matriciel.
+	// compute the matrix multiplication
 	for (int i = 0; i < rowsA; ++i)
 	{
 		for (int k = 0; k < colsA; ++k)
@@ -295,6 +317,7 @@ void OffboardControl::PublishVehicleCommand(uint16_t command, float param1, floa
 	vehicle_command_publisher_->publish(msg);
 }
 
+// Publish multiple setpoints to make the drone follow a trajectory
 void OffboardControl::FollowTrajectory(vector<array<double, 3>> poses_to_reach, float accuracy)
 {
 	// first step
