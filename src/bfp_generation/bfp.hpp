@@ -24,7 +24,7 @@ void choosePoints(int event, int x, int y, int flags, void *param);
 void create_mask(std::string image_name);
 std::vector<cv::Point> get_bfp_points(cv::Mat image, std::vector<cv::Point> bfp, int spacingInterval, bool display = 0);
 std::vector<cv::Point> get_image_points(std::string image_name);
-std::vector<GPSPoint> get_gps_points();
+std::vector<GPSPoint> get_gps_points(const std::string &filename);
 std::vector<std::array<double, 2>> transformToGlobal(const std::vector<cv::Point> &imagePoints,
                                                     const cv::Point &p1, const cv::Point &p2,
                                                     const std::array<double, 2> &global1, const std::array<double, 2> &global2);

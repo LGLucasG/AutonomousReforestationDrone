@@ -37,7 +37,7 @@ int main()
             }
             std::cout << "number of points for bfp : " << bfp.size() << std::endl;
             std::vector<cv::Point> imgPoints = get_image_points(path);
-            std::vector<GPSPoint> gpsPoints = get_gps_points();
+            std::vector<GPSPoint> gpsPoints = get_gps_points("../gps_keypoints.csv");
             std::vector<GPSPoint> bfp_gps = transformToGPS(bfp, imgPoints[0], imgPoints[1], gpsPoints[0], gpsPoints[1]);
             std::ofstream myfile;
             myfile.open("../bfp_gps.csv");

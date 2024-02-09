@@ -20,7 +20,7 @@ This guide outlines the steps to compute an optimal back-and-forth (BFP) path fo
 
 1. **Prepare the Field Image**:
     - Obtain an image of the field. A screenshot from Google Maps can serve this purpose effectively. Place the image within the `bfp_generation/` directory. Note that all images located in `bfp_generation/img/` have undergone testing.
-    - Identify and record the GPS coordinates of two distinct points on this image. Save these coordinates in a file named `gps.csv`.
+    - Identify and record the GPS coordinates of two distinct points on this image. Save these coordinates in a file named `gps_keypoints.csv`.
 
 2. **Build the Software**:
     Open a new terminal and execute the following commands to compile the program:
@@ -40,7 +40,7 @@ This guide outlines the steps to compute an optimal back-and-forth (BFP) path fo
 4. **Interact with the Program**:
     - Click on the corner of the field within the program's graphical interface.
     - Press `<Enter>` to initiate the computation of the BFP and verify its correctness.
-    - Select the two points (previously noted in `gps.csv`) on the image to compute the BFP accurately.
+    - Select the two points (previously noted in `gps_keypoints.csv`) on the image to compute the BFP accurately.
 
 5. **Save the Computed Path**:
     - The program will generate and save the back-and-forth path points in a file named `bfp_gps.csv`.

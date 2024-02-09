@@ -474,14 +474,14 @@ std::vector<cv::Point> get_image_points(std::string image_name)
     return imgPoints;
 }
 
-std::vector<GPSPoint> get_gps_points()
+std::vector<GPSPoint> get_gps_points(const std::string &filename)
 {
-    // if gos.csv exists, take the points from it
-    std::ifstream file("../gps.csv");
+    // if gps_keypoints.csv exists, take the points from it
+    std::ifstream file(filename);
     std::vector<GPSPoint> gpsPoints;
     if (file.is_open())
     {
-        std::cout << "gps.csv file found." << std::endl;
+        std::cout << "gps_keypoints.csv file found." << std::endl;
         std::string line;
         std::getline(file, line); // skip first line
         while (std::getline(file, line))
@@ -498,7 +498,7 @@ std::vector<GPSPoint> get_gps_points()
     }
     else
     {
-        std::cout << "No gps.csv file found." << std::endl;
+        std::cout << "No gps_keypoints.csv file found." << std::endl;
         std::cout << "Enter the GPS coordinates of the first point : " << std::endl;
         GPSPoint gpsPoint;
         std::cout << "latitude : ";
