@@ -12,4 +12,59 @@ This section describes the process to follow in order to obtain a result such as
 
 ## 〽️ Path Generation
 
+### Compute an Optimal Back-and-Forth Path for a Field
+
+This guide outlines the steps to compute an optimal back-and-forth (BFP) path for a specified field area. Follow these steps carefully to achieve accurate results.
+
+#### Process Overview
+
+1. **Prepare the Field Image**:
+    - Obtain an image of the field. A screenshot from Google Maps can serve this purpose effectively. Place the image within the `bfp_generation/` directory. Note that all images located in `bfp_generation/img/` have undergone testing.
+    - Identify and record the GPS coordinates of two distinct points on this image. Save these coordinates in a file named `gps.csv`.
+
+2. **Build the Software**:
+    Open a new terminal and execute the following commands to compile the program:
+    ```
+    mkdir build/
+    cd build/
+    cmake ..
+    make
+    ```
+
+3. **Run the Main Program**:
+    Execute the compiled program by running:
+    ```
+    ./main
+    ```
+
+4. **Interact with the Program**:
+    - Click on the corner of the field within the program's graphical interface.
+    - Press `<Enter>` to initiate the computation of the BFP and verify its correctness.
+    - Select the two points (previously noted in `gps.csv`) on the image to compute the BFP accurately.
+
+5. **Save the Computed Path**:
+    - The program will generate and save the back-and-forth path points in a file named `bfp_gps.csv`.
+
+6. **Transfer the Computed Path**:
+    - Execute the following command to copy the `bfp_gps.csv` file into your workspace:
+    ```
+    ../cp_tows.sh
+    ```
+
+**CSV File Format**
+
+Ensure that CSV files adhere to the following format:
+
+```
+latitude, longitude
+45.189..., 8.159...
+```
+
+**This project requires the following dependencies**:
+
+- **OpenCV**: A library of programming functions mainly aimed at real-time computer vision.
+- **GeographicLib**: A library for geographic projections and geodesic calculations.
+
+Ensure you have these libraries installed and properly configured in your environment to successfully compile and run the project.
+
 ## 🛫 Ready for Takeoff !
