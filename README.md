@@ -5,7 +5,7 @@
 
 [![Watch the video](./img/preview.png)](https://youtu.be/yf7zY1jwji8)
 
-[📖 User documentation](docs/user) • [👨‍💻 Developer documentation](docs/developer) • [📈 Project report](docs/report) • [📚 Bibliography](docs/bibliography) • [⚠️ Risk Analysis](docs/risk)
+[📖 User documentation](docs/user) • [👨‍💻 Developer documentation](docs/developer) • [📈 Project report](docs/report) • [📚 Bibliography](docs/bibliography)
 
 ## 📄 This project in short
 
