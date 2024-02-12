@@ -96,7 +96,7 @@ This guide outlines the steps to compute an optimal back-and-forth (BFP) path fo
 6. **Transfer the Computed Path**:
     - Execute the following command to copy the `bfp_gps.csv` file into your workspace:
     ```
-    ../cp_tows.sh
+    ../cp_to_ws.sh
     ```
 
 **CSV File Format**
