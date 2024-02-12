@@ -21,8 +21,8 @@ To install the project, simply clone this repository :
 git clone https://github.com/LGLucasG/AutonomousReforestationDrone/ --recursive
 ```
 The `--recursive` option is crucial as it initializes and updates each submodules in the repository (including nested submodules). Submodules are located in the [src](src) folder:
-- [PX4-Autopilot](https://github.com/PX4/PX4-Autopilot).
-- [Micro-XRCE-DDS-Agent](https://github.com/eProsima/Micro-XRCE-DDS-Agent.git)
+- [**PX4-Autopilot**](https://github.com/PX4/PX4-Autopilot): An open-source flight control software for drones and other unmanned vehicles.
+- [**Micro-XRCE-DDS-Agent**](https://github.com/eProsima/Micro-XRCE-DDS-Agent.git): Acts as a server that connects these lightweight clients to a standard DDS network or service. Alternative to MavROS.
 
 If you forgot to use the `--recursive` option when cloning, you can still use the command `git submodule update --init --recursive` to initialize and update the submodules. You can find more information about submodules [here](https://git-scm.com/book/en/v2/Git-Tools-Submodules).
 
