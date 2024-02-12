@@ -4,7 +4,7 @@
 **Description:** Implementing autonomous behaviours for a drone to be able to reforest any given area without teleoperating.
 
 [![Watch the video](./img/previewDrone.png)](https://youtu.be/yf7zY1jwji8)
-[![Watch the video](./img/previewPath.png)](https://youtu.be/yf7zY1jwji8)
+[![Watch the video](./img/previewPath.png)](https://www.youtube.com/watch?v=FuNU0X7J_0g)
 
 [📖 User documentation](docs/user) • [👨‍💻 Developer documentation](docs/developer) • [📈 Project report](docs/report) • [📚 Bibliography](docs/bibliography)
 
