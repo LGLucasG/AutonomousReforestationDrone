@@ -27,6 +27,10 @@ More insight into our solutions and results can be found in the [Project Report]
 - [👨‍💻](docs/developer) You can find **more information about the code** in the [Developper documentation](docs/developer).
 - [📚](docs/bibliography) The **state of the art** is available in the [Bibliography](docs/bibliography).
 
+## 📋 Additional notes
+
+
+
 ## 🔍 About this project
 
 |                        |                        |
