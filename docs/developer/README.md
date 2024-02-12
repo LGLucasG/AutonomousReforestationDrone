@@ -5,23 +5,11 @@
 ### BFP Generation
 This project contains a library of functions as well as several programs for computing the Back-and-Forth path.
 
-1. The bfp.hpp and bfp.cpp files contain the specifications and implementations of the functions that will be called to generate the optimal path, respectively. The implementation is a different path from what we have seen in the bibliography section. Indeed, although we use a Back-and-Forth path, we have not implemented the FLPMW (Flat Lines Perpendicular to Minimum Width) but a slightly different version. Instead of drawing the flat lines perpendicular to the smallest width of the polygon, we made a simpler implementation that draws the flat lines parallel to the widest side of the polygon. This facilitates the implementation since finding the longest side in a polygon is trivial using the right libraries. In the image below, the largest side of the polygon is highlighted in red, and its perpendicular, which is used to draw the various flat lines for the generation of bfp, is in green. The lines in shades of red and blue are the bfp lines. Red being the start of the path, blue is the end.
-
-<p align="center">
-  <img src="https://github.com/LGLucasG/AutonomousReforestationDrone/blob/main/img/bfp_lines.png">
-</p>
+1. The bfp.hpp and bfp.cpp files contain the specifications and implementations of the functions that will be called to generate the optimal path, respectively. The implementation is a different path from what we have seen in the bibliography section. Indeed, although we use a Back-and-Forth path, we have not implemented the FLPMW (Flat Lines Perpendicular to Minimum Width) but a slightly different version. Instead of drawing the flat lines perpendicular to the smallest width of the polygon, we made a simpler implementation that draws the flat lines parallel to the widest side of the polygon. This facilitates the implementation since finding the longest side in a polygon is trivial using the right libraries. 
 
 2. The main.cpp file is the main file, the one that will be compiled into a binary to generate the BFP from an image (aerial/satellite view extracted from an online map, for example). It searches for an image in the main folder of the project (bfp_generation/) to use as a basis for field recognition. The program also parses the gps_keypoints.csv file. The GPS coordinates of the points will be recorded in the bfp_gps.csv file.
 
-<p align="center">
-  <img src="https://github.com/LGLucasG/AutonomousReforestationDrone/blob/main/img/bfp_lines_points.png">
-</p>
-
 3. The check_csv.cpp file is another file compiled into a binary that allows for the visualization of the points obtained by the trajectory generation algorithm. More precisely, the program will parse the generated bfp_gps.csv file and convert the GPS coordinates into local coordinates using the GeographicLib library. The points will then be displayed on an image, which allows for the preview of the drone's steps and the actual rendering.
-
-<p align="center">
-  <img src="https://github.com/LGLucasG/AutonomousReforestationDrone/blob/main/img/bfp_points.png">
-</p>
 
 ### Drone controller (offboard.cpp)
 
