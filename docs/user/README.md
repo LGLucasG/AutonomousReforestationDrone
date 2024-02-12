@@ -36,7 +36,7 @@ source <...>/src/PX4-Autopilot/Tools/simulation/gazebo-classic/setup_gazebo.bash
 source <...>/src/PX4-Autopilot/build/px4_sitl_default/
 ```
 
-## Using the Lidar
+## 📡 Using the Lidar
 
 First, the LIDAR must be properly connected to the Raspberry Pi :
 
