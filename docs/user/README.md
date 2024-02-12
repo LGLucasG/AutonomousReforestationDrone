@@ -36,6 +36,26 @@ source <...>/src/PX4-Autopilot/Tools/simulation/gazebo-classic/setup_gazebo.bash
 source <...>/src/PX4-Autopilot/build/px4_sitl_default/
 ```
 
+## Using the Lidar
+
+First, the LIDAR must be properly connected to the Raspberry Pi :
+
+*Insert image with connections here*
+
+Once connected, `cd` into an existing ROS2 workspace and then into the `src` folder, or create a workspace with :
+```
+mkdir lidar_ws
+cd lidar_ws
+mkdir src
+cd src
+```
+Download the [LIDAR package](src/lidar_pkg) and move back into the workspace with `cd ..`. Build the workspace with `colcon build` then source the `bashrc`. 
+
+To launch the node, use the command : `ros2 run lidar_pkg lidar_node`
+
+The topic should start publishing every second a message with the distance to the nearest obstacle.
+
+
 ## 〽️ Path Generation
 
 ### Compute an Optimal Back-and-Forth Path for a Field
