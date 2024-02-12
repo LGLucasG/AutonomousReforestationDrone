@@ -21,6 +21,12 @@ In brief, we use **RTK** to locate the drone, a **3D camera** to detect obstacle
 
 More insight into our solutions and results can be found in the [Project Report](docs/report).
 
+## 🚀 Quick Start
+
+- [📖](docs/user) You can find **install instructions** and **detailed testing steps** in the [User documentation](docs/user).
+- [👨‍💻](docs/developer) You can find **more information about the code** in the [Developper documentation](docs/developer).
+- [📚](docs/bibliography) The **state of the art** is available in the [Bibliography](docs/bibliography).
+
 ## 🔍 About this project
 
 |                        |                        |
