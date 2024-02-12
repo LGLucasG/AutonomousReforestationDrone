@@ -55,7 +55,7 @@ To launch the node, use the command : `ros2 run lidar_pkg lidar_node`
 
 The topic should start publishing every second a message with the distance to the nearest obstacle.
 
-![Topic publishing distance to nearest obstacle](src/screenLidar)
+![Topic publishing distance to nearest obstacle](../src/screenLidar)
 
 
 ## 〽️ Path Generation
