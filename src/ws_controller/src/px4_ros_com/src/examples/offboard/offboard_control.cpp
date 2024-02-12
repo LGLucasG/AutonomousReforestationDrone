@@ -96,10 +96,10 @@ public:
 		offboard_setpoint_counter_ = 0;
 		// read the csv file
 		const char *homeDir = getenv("HOME");
-		// find the ws directory in homeDir recursively
+		// find the ws_controller directory in homeDir recursively
 		if (homeDir)
 		{
-			string filePath = string(homeDir) + "/ws/src/px4_ros_com/src/examples/offboard/bfp_gps.csv";
+			string filePath = string(homeDir) + "/ws_controller/src/px4_ros_com/src/examples/offboard/bfp_gps.csv";
 			// read bfp_gps.csv file
 			ifstream file(filePath);
 			// check if file is not empyt/not found
