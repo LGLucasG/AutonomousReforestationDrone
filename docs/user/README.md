@@ -57,6 +57,8 @@ The topic should start publishing every second a message with the distance to th
 
 ![Topic publishing distance to nearest obstacle](../../img/screenLidar)
 
+**NB** : This package uses this [Github repository](https://github.com/garmin/LIDARLite_RaspberryPi_Library.git) to communicate with the LIDAR. However, it is not needed to clone this repository as the necessary source files are already included in the package. 
+
 
 ## 〽️ Path Generation
 
