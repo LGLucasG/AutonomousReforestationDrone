@@ -1,5 +1,5 @@
 # Autonomous Reforestation Drone
-## *A project by Kariboo*
+## 🫎 A project by *Kariboo*
 
 **Description:** Implementing autonomous behaviours for a drone to be able to reforest any given area without teleoperating.
 
