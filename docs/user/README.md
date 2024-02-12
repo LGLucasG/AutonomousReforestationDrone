@@ -40,7 +40,7 @@ source <...>/src/PX4-Autopilot/build/px4_sitl_default/
 
 First, the LIDAR must be properly connected to the Raspberry Pi :
 
-*Insert image with connections here*
+![Wiring for the LIDAR](../../img/Wiring_lidar.PNG)
 
 Once connected, `cd` into an existing ROS2 workspace and then into the `src` folder, or create a workspace with :
 ```
