@@ -31,9 +31,9 @@ Last but not least, **do not forget to source all the necessary setup files** ! 
 ```
 source /opt/ros/humble/setup.bash
 source <absolute_path_to_the_repo>/src/ws_controller/install/setup.bash
-source <...>/src/ws_controller/install/loacl_setup.bash
-source <...>/src/PX4-Autopilot/Tools/simulation/gazebo-classic/setup_gazebo.bash
-source <...>/src/PX4-Autopilot/build/px4_sitl_default/
+source <absolute_path_to_the_repo>/src/ws_controller/install/loacl_setup.bash
+source <absolute_path_to_the_repo>/src/PX4-Autopilot/Tools/simulation/gazebo-classic/setup_gazebo.bash
+source <absolute_path_to_the_repo>/src/PX4-Autopilot/build/px4_sitl_default/
 ```
 
 ## 📡 Using the Lidar
