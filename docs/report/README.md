@@ -24,4 +24,5 @@ We have also programmed the drone's controller, under ROS 2, which enables the d
 Currently, it is possible to control the drone in the simulation and to make it cover an entire field. However, the drone is only controlled by position and not by speed, which makes its flight very unstable. The controller tries to reach each position as quickly as possible, resulting in abrupt movements when a new point must be reached. Speed control would be preferable but would require modifying the implementation.
 
 The detailed process of use is available in the [user documentation](https://github.com/LGLucasG/AutonomousReforestationDrone/blob/main/docs/user/README.md).
+
 The detailed implementation is available in the [developer documentation](https://github.com/LGLucasG/AutonomousReforestationDrone/blob/main/docs/developer/README.md).
