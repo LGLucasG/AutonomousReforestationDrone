@@ -1,6 +1,6 @@
 # 📖 User documentation
 
-[![Watch the video](../../img/previewPath.png)](https://youtu.be/yf7zY1jwji8)
+[![Watch the video](../../img/previewPath.png)](https://www.youtube.com/watch?v=FuNU0X7J_0g)
 
 This section describes the process to follow in order to obtain a result such as the one presented in [the video above](https://www.youtube.com/watch?v=FuNU0X7J_0g). 
 
