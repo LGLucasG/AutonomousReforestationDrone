@@ -8,12 +8,33 @@ This section describes the process to follow in order to obtain a result such as
 
 ## ✅ Prerequisites
 
-- **OpenCV**: A library of programming functions mainly aimed at real-time computer vision.
-- **GeographicLib**: A library for geographic projections and geodesic calculations.
-- **PX4-Autopilot**: An open-source flight control software for drones and other unmanned vehicles.
-- **QGroundControl**: A user-friendly ground control station for the configuration and operation of UAVs.
+You will need to install the following libraries/programs for our tests to work:
+
+- [**OpenCV**](https://opencv.org/releases/): A library of programming functions mainly aimed at real-time computer vision.
+- [**GeographicLib**](https://geographiclib.sourceforge.io/): A library for geographic projections and geodesic calculations.
+- [**QGroundControl**](https://docs.qgroundcontrol.com/master/en/qgc-user-guide/getting_started/download_and_install.html): A user-friendly ground control station for the configuration and operation of UAVs.
 
 ## 📁 Installing the project
+
+To install the project, simply clone this repository :
+```
+git clone https://github.com/LGLucasG/AutonomousReforestationDrone/ --recursive
+```
+The `--recursive` option is crucial as it initializes and updates each submodules in the repository (including nested submodules). Submodules are located in the [src](src) folder:
+- [PX4-Autopilot](https://github.com/PX4/PX4-Autopilot).
+- [Micro-XRCE-DDS-Agent](https://github.com/eProsima/Micro-XRCE-DDS-Agent.git)
+
+If you forgot to use the `--recursive` option when cloning, you can still use the command `git submodule update --init --recursive` to initialize and update the submodules. You can find more information about submodules [here](https://git-scm.com/book/en/v2/Git-Tools-Submodules).
+
+Last but not least, **do not forget to source all the necessary setup files** ! Adapt the following commands according to your installation. We recommand putting them in your `.bashrc` and avoiding relative paths.
+
+```
+source /opt/ros/humble/setup.bash
+source <absolute_path_to_the_repo>/src/ws_controller/install/setup.bash
+source <...>/src/ws_controller/install/loacl_setup.bash
+source <...>/src/PX4-Autopilot/Tools/simulation/gazebo-classic/setup_gazebo.bash
+source <...>/src/PX4-Autopilot/build/px4_sitl_default/
+```
 
 ## 〽️ Path Generation
 
