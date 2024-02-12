@@ -9,7 +9,7 @@ int check_points(std::vector<cv::Point> points, int min_points, int max_points)
     // check points
     if (points.size() < min_points or points.size() > max_points)
     {
-        std::cout << "Bad approximation, not enough/too many points" << std::endl;
+        std::cout << "Not enough/too many points" << std::endl;
         return 0;
     }
     return 1;
@@ -440,6 +440,10 @@ void create_mask(std::string image_name)
     cv::imshow("image", image);
     cv::waitKey(0);
     cv::destroyAllWindows();
+    if (!check_points(points))
+    {
+        return;
+    }
 
     // create mask
     cv::Mat mask = cv::Mat::zeros(image.size(), CV_8UC1);

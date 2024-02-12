@@ -25,6 +25,11 @@ int main()
             std::vector<cv::Point> bfp;
             std::cout << path << std::endl;
             create_mask(path);
+            if (!std::filesystem::exists("../mask.png"))
+            {
+                std::cout << "No file mask.png created. Please retry." << std::endl;
+                return 0;
+            }
             bfp = compute_bfp("../mask.png", DENSITY, SPACING_INTERVAL, DISPLAY);
             if (bfp.size() == 0)
             {
