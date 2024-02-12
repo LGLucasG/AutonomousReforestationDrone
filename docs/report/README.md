@@ -21,7 +21,7 @@ The aim of this part is to control the drone autonomously and cover a field in a
 
 We have also programmed the drone's controller, under ROS 2, which enables the drone to take off, follow a series of successive points and land, all autonomously and without requiring any user intervention once the drone has been launched. In this way, the drone controller can be given the file containing the coordinates corresponding to the Back-and-Forth path generated, so that it can cover the field in a simulation.
 
-Currently, it is possible to control the drone in the simulation and to make it cover an entire field. However, the drone is only controlled by position and not by speed, which makes its flight very unstable. The controller tries to reach each position as quickly as possible, resulting in abrupt movements when a new point must be reached. Speed control would be preferable but would require modifying the implementation.
+Currently, it is possible to control the drone in the simulation and to make it cover an entire field. However, the drone is only controlled by position and not by speed, which makes its flight very unstable. The controller tries to reach each position as quickly as possible, resulting in abrupt movements when a new point must be reached. Speed control would be preferable but would require modifying the implementation. A test in real-life conditions remains pending.
 
 The detailed process of use is available in the [user documentation](https://github.com/LGLucasG/AutonomousReforestationDrone/blob/main/docs/user/README.md).
 
