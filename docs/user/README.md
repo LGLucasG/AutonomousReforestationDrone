@@ -21,8 +21,8 @@ To install the project, simply clone this repository :
 git clone https://github.com/LGLucasG/AutonomousReforestationDrone/ --recursive
 ```
 The `--recursive` option is crucial as it initializes and updates each submodules in the repository (including nested submodules). Submodules are located in the [src](src) folder:
-- [PX4-Autopilot](https://github.com/PX4/PX4-Autopilot).
-- [Micro-XRCE-DDS-Agent](https://github.com/eProsima/Micro-XRCE-DDS-Agent.git)
+- [**PX4-Autopilot**](https://github.com/PX4/PX4-Autopilot): An open-source flight control software for drones and other unmanned vehicles.
+- [**Micro-XRCE-DDS-Agent**](https://github.com/eProsima/Micro-XRCE-DDS-Agent.git): Acts as a server that connects these lightweight clients to a standard DDS network or service. Alternative to MavROS.
 
 If you forgot to use the `--recursive` option when cloning, you can still use the command `git submodule update --init --recursive` to initialize and update the submodules. You can find more information about submodules [here](https://git-scm.com/book/en/v2/Git-Tools-Submodules).
 
@@ -35,6 +35,28 @@ source <...>/src/ws_controller/install/loacl_setup.bash
 source <...>/src/PX4-Autopilot/Tools/simulation/gazebo-classic/setup_gazebo.bash
 source <...>/src/PX4-Autopilot/build/px4_sitl_default/
 ```
+
+## Using the Lidar
+
+First, the LIDAR must be properly connected to the Raspberry Pi :
+
+*Insert image with connections here*
+
+Once connected, `cd` into an existing ROS2 workspace and then into the `src` folder, or create a workspace with :
+```
+mkdir lidar_ws
+cd lidar_ws
+mkdir src
+cd src
+```
+Download the [LIDAR package](src/lidar_pkg) and move back into the workspace with `cd ..`. Build the workspace with `colcon build` then source the `bashrc`. 
+
+To launch the node, use the command : `ros2 run lidar_pkg lidar_node`
+
+The topic should start publishing every second a message with the distance to the nearest obstacle.
+
+![Topic publishing distance to nearest obstacle](../src/screenLidar)
+
 
 ## 〽️ Path Generation
 
