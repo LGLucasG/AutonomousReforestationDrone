@@ -24,3 +24,9 @@ This code defines a ROS 2 node for offboard control of a drone, specifically des
 4. Main Loop: The node enters a loop where it continually checks the drone's position against the next target position in the trajectory. If the drone is within a specified accuracy of the target position, the node updates the target to the next waypoint. This process involves converting the GPS coordinates of the waypoint into local coordinates, applying any necessary transformations, and publishing the new setpoint. The loop also includes mechanisms for arming the drone, switching to offboard control mode, and eventually landing the drone once all waypoints have been reached.
 
 The other files in the px4_msgs and px4_ros_com folders have not been modified. Their documentation is available on the respective GitHub pages of these projects ([px4_msgs](https://github.com/PX4/px4_msgs), [px4_ros_com](https://github.com/PX4/px4_ros_com)).
+
+## Seed cannon
+
+A first prototype was developed the year before this project (cf GitHub repository linked in the main README). In this project, the cannon's architecture was updated to improve its design and mechanics. 
+
+In the newer version, a system with a LED and a photodiode was designed to detect the seed in the barrel of the cannon. The DC motor has been replaced with a stepper motor for a more precise control of the seed loading system. The arduino codes for the detection system and motor control can be found in the src/canon_arduino folder. The .step file of the 3D models of the parts of the canon can also be found there. 
