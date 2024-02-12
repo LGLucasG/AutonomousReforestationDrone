@@ -9,7 +9,11 @@ This project contains a library of functions as well as several programs for com
 
 2. The main.cpp file is the main file, the one that will be compiled into a binary to generate the BFP from an image (aerial/satellite view extracted from an online map, for example). It searches for an image in the main folder of the project (bfp_generation/) to use as a basis for field recognition. The program also parses the gps_keypoints.csv file. The GPS coordinates of the points will be recorded in the bfp_gps.csv file.
 
+![BFP Generated](https://github.com/LGLucasG/AutonomousReforestationDrone/blob/main/img/bfp_lines_points.png)
+
 3. The check_csv.cpp file is another file compiled into a binary that allows for the visualization of the points obtained by the trajectory generation algorithm. More precisely, the program will parse the generated bfp_gps.csv file and convert the GPS coordinates into local coordinates using the GeographicLib library. The points will then be displayed on an image, which allows for the preview of the drone's steps and the actual rendering.
+
+![Checking the generated BFP](https://github.com/LGLucasG/AutonomousReforestationDrone/blob/main/img/bfp_points.png)
 
 ### Drone controller (offboard.cpp)
 
