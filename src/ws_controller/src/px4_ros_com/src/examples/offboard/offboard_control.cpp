@@ -69,6 +69,7 @@
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
+#include <array>
 
 using namespace std;
 using namespace chrono;
@@ -99,7 +100,27 @@ public:
 		// find the ws_controller directory in homeDir recursively
 		if (homeDir)
 		{
-			string filePath = string(homeDir) + "/ws_controller/src/px4_ros_com/src/examples/offboard/bfp_gps.csv";
+			string command = "find " + string(homeDir) + " -type d -name 'ws_controller'";
+			// store the result of the command in a string
+			string result = "";
+			FILE *pipe = popen(command.c_str(), "r");
+			if (!pipe)
+			{
+				RCLCPP_ERROR(this->get_logger(), "popen failed");
+			}
+			char buffer[128];
+			while (!feof(pipe))
+			{
+				if (fgets(buffer, 128, pipe) != NULL)
+				{
+					result += buffer;
+				}
+			}
+			pclose(pipe);
+			// remove the last character of the string
+			result.pop_back();
+			// store the path of the csv file
+			string filePath = result + "/src/px4_ros_com/src/examples/offboard/bfp_gps.csv";
 			// read bfp_gps.csv file
 			ifstream file(filePath);
 			// check if file is not empyt/not found
@@ -189,6 +210,7 @@ private:
 	void PublishTrajectorySetpoint(array<float, 3> position);
 	void PublishVehicleCommand(uint16_t command, float param1 = 0.0, float param2 = 0.0);
 	array<float, 3> convertDoubleToFloat(const array<double, 3> &input);
+	float euclidian_distance(array<float, 3> array1, array<float, 3> array2);
 	array<float, 3> matrixMultiply(const array<array<float, 3>, 3> &A, const array<float, 3> &B);
 	tuple<double, double, double> convertGPSToLocal(double latitude, double longitude, double altitude);
 	void initializeGPSToLocalConverter(double initialLatitude, double initialLongitude, double initialAltitude = 0.0);
@@ -230,6 +252,12 @@ array<float, 3> OffboardControl::convertDoubleToFloat(const array<double, 3> &in
 		output[i] = static_cast<float>(input[i]);
 	}
 	return output;
+}
+
+float OffboardControl::euclidian_distance(array<float, 3> array1, array<float, 3> array2)
+{
+	array<float, 3> diff = {array1[0] - array2[0], array1[1] - array2[1], array1[2] - array2[2]};
+	return std::sqrt(diff[0] * diff[0] + diff[1] * diff[1] + diff[2] * diff[2]);
 }
 
 // initialize the GPS to local converter
@@ -355,7 +383,7 @@ void OffboardControl::FollowTrajectory(vector<array<double, 3>> poses_to_reach, 
 	}
 	if (this->index_pos <= poses_to_reach.size())
 	{
-		if (abs(this->current_local_pos[0] - this->current_target_pos[0]) < accuracy && abs(this->current_local_pos[1] - this->current_target_pos[1]) < accuracy && abs(this->current_local_pos[2] - this->current_target_pos[2]) < accuracy)
+		if (euclidian_distance(this->current_local_pos,this->current_target_pos) < accuracy)
 		{
 			this->index_pos++;
 		}
