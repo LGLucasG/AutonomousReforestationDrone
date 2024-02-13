@@ -1,7 +1,9 @@
 */build/*
-*/vscode/*
+*/log/*
+*/install/*
+*/.vscode/*
 ./src/bfp_generation/bfp_gps.csv
-./src/ws/build/*
-./src/ws/devel/*
-./src/ws/install/*
-./src/ws/log/*
+./src/ws_controller/build/*
+./src/ws_controller/devel/*
+./src/ws_controller/install/*
+./src/ws_controller/log/*
