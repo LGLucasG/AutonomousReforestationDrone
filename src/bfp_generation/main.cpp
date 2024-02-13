@@ -10,55 +10,61 @@
 #define SPACING_INTERVAL 30
 #define DISPLAY 1
 
+using namespace std;
+
 int main()
 {
-    if (std::filesystem::exists("../mask.png"))
+    if (filesystem::exists("../mask.png"))
     {
-        std::remove("../mask.png");
+        remove("../mask.png");
     }
 
-    for (const std::filesystem::__cxx11::directory_entry &entry : std::filesystem::directory_iterator("../"))
+    for (const filesystem::__cxx11::directory_entry &entry : filesystem::directory_iterator("../"))
     {
-        std::string path = entry.path();
-        if (path.find(".png") != std::string::npos)
+        string path = entry.path();
+        if (path.find(".png") != string::npos)
         {
-            std::vector<cv::Point> bfp;
-            std::cout << path << std::endl;
+            vector<cv::Point> bfp;
+            cout << path << endl;
             create_mask(path);
-            if (!std::filesystem::exists("../mask.png"))
+            if (!filesystem::exists("../mask.png"))
             {
-                std::cout << "No file mask.png created. Please retry." << std::endl;
+                cout << "No file mask.png created. Please retry." << endl;
                 return 0;
             }
             bfp = compute_bfp("../mask.png", DENSITY, SPACING_INTERVAL, DISPLAY);
             if (bfp.size() == 0)
             {
-                std::cout << "No BFP found / bad polygon, please retry." << std::endl;
-                if (std::filesystem::exists("../mask.png"))
+                cout << "No BFP found / bad polygon, please retry." << endl;
+                if (filesystem::exists("../mask.png"))
                 {
-                    std::remove("../mask.png");
+                    remove("../mask.png");
                 }
                 break;
             }
-            std::cout << "number of points for bfp : " << bfp.size() << std::endl;
-            std::vector<cv::Point> imgPoints = get_image_points(path);
-            std::vector<GPSPoint> gpsPoints = get_gps_points("../gps_keypoints.csv");
-            std::vector<GPSPoint> bfp_gps = transformToGPS(bfp, imgPoints[0], imgPoints[1], gpsPoints[0], gpsPoints[1]);
-            std::ofstream myfile;
+            cout << "number of points for bfp : " << bfp.size() << endl;
+            vector<cv::Point> imgPoints;
+            while (imgPoints.size() != 2)
+            {
+                imgPoints = get_image_points(path);
+            }
+            vector<GPSPoint> gpsPoints = get_gps_points("../gps_keypoints.csv");
+            vector<GPSPoint> bfp_gps = transformToGPS(bfp, imgPoints[0], imgPoints[1], gpsPoints[0], gpsPoints[1]);
+            ofstream myfile;
             myfile.open("../bfp_gps.csv");
             myfile << "latitude,longitude\n";
             for (int i = 0; i < bfp_gps.size(); i++)
             {
-                myfile << std::setprecision(15) << bfp_gps[i].latitude << "," << bfp_gps[i].longitude << "\n";
+                myfile << setprecision(15) << bfp_gps[i].latitude << "," << bfp_gps[i].longitude << "\n";
             }
             myfile.close();
-            std::cout << "Coordinates of the BFP stored in bfp_gps.csv" << std::endl;
+            cout << "Coordinates of the BFP stored in bfp_gps.csv" << endl;
             break;
         }
     }
-    if (std::filesystem::exists("../mask.png"))
+    if (filesystem::exists("../mask.png"))
     {
-        std::remove("../mask.png");
+        remove("../mask.png");
     }
     return 0;
 }
