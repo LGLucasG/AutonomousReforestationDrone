@@ -352,7 +352,7 @@ void OffboardControl::FollowTrajectory(vector<array<double, 3>> poses_to_reach, 
 	if (this->index_pos == 0)
 	{
 		this->current_target_pos = {0, 0, -HEIGHT};
-		if (this->init_global_pos[0] == 0 && this->init_global_pos[1] == 0 && abs(this->current_local_pos[2]) > 2)
+		if (this->init_global_pos[0] == 0 && this->init_global_pos[1] == 0 && abs(this->current_local_pos[2]) > HEIGHT/3)
 		{
 			RCLCPP_INFO(this->get_logger(), "-------------------------------------------------------------------------------------------------------------");
 			RCLCPP_INFO(this->get_logger(), "INITIALISING POSITION");

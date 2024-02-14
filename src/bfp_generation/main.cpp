@@ -32,6 +32,11 @@ int main()
                 cout << "No file mask.png created. Please retry." << endl;
                 return 0;
             }
+            vector<cv::Point> imgPoints;
+            while (imgPoints.size() != 2)
+            {
+                imgPoints = get_image_points(path);
+            }
             bfp = compute_bfp("../mask.png", DENSITY, SPACING_INTERVAL, DISPLAY);
             if (bfp.size() == 0)
             {
@@ -43,11 +48,6 @@ int main()
                 break;
             }
             cout << "number of points for bfp : " << bfp.size() << endl;
-            vector<cv::Point> imgPoints;
-            while (imgPoints.size() != 2)
-            {
-                imgPoints = get_image_points(path);
-            }
             vector<GPSPoint> gpsPoints = get_gps_points("../gps_keypoints.csv");
             vector<GPSPoint> bfp_gps = transformToGPS(bfp, imgPoints[0], imgPoints[1], gpsPoints[0], gpsPoints[1]);
             ofstream myfile;
